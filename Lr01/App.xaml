@@ -1,0 +1,9 @@
+﻿<Application x:Class="Lr01.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Lr01"
+             StartupUri="Converter.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

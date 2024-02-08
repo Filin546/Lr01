@@ -1,0 +1,41 @@
+﻿<Window x:Class="Lr01.Converter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lr01"
+        mc:Ignorable="d"
+        Title="Converter" Height="250" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Значение:" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+        <TextBox x:Name="valueTextBox" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" Margin="80,0,0,0" PreviewTextInput="ValueTextBox_PreviewTextInput"/>
+
+        <Label Content="Измерение:" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,150,0"/>
+        <ComboBox x:Name="startUnitComboBox" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Center" Width="120" Margin="0,0,20,0">
+            <ComboBoxItem Content="Метры"/>
+            <ComboBoxItem Content="Километры"/>
+            <ComboBoxItem Content="Дюймы"/>
+            <ComboBoxItem Content="Футы"/>
+        </ComboBox>
+
+        <GroupBox x:Name="endUnitGroupBox" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Header="Конвертировать в">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="endUnitMeterRadioButton" Content="Метры" Margin="5"/>
+                <RadioButton x:Name="endUnitKilometerRadioButton" Content="Километры" Margin="5"/>
+                <RadioButton x:Name="endUnitInchRadioButton" Content="Дюймы" Margin="5"/>
+                <RadioButton x:Name="endUnitFeetRadioButton" Content="Футы" Margin="5"/>
+            </StackPanel>
+        </GroupBox>
+
+        <Button x:Name="convertButton" Content="Конвертировать" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Click="ConvertButton_Click"/>
+
+        <Label x:Name="resultLabel" Content="" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+    </Grid>
+</Window>
