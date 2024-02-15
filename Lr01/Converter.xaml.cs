@@ -42,9 +42,11 @@ namespace Lr01
 
             // Проверка, что выбрано конечное измерение
             if (!endUnitMeterRadioButton.IsChecked.HasValue || !endUnitKilometerRadioButton.IsChecked.HasValue ||
-                !endUnitInchRadioButton.IsChecked.HasValue || !endUnitFeetRadioButton.IsChecked.HasValue ||
-                (!endUnitMeterRadioButton.IsChecked.Value && !endUnitKilometerRadioButton.IsChecked.Value &&
-                !endUnitInchRadioButton.IsChecked.Value && !endUnitFeetRadioButton.IsChecked.Value))
+            !endUnitInchRadioButton.IsChecked.HasValue || !endUnitFeetRadioButton.IsChecked.HasValue || 
+            !endUnitMileRadioButton.IsChecked.HasValue || !endUnitYardRadioButton.IsChecked.HasValue ||
+            (!endUnitMeterRadioButton.IsChecked.Value && !endUnitKilometerRadioButton.IsChecked.Value &&
+            !endUnitInchRadioButton.IsChecked.Value && !endUnitFeetRadioButton.IsChecked.Value && 
+            !endUnitMileRadioButton.IsChecked.Value && !endUnitYardRadioButton.IsChecked.Value))
             {
                 resultLabel.Content = "Выберите конечное измерение.";
                 return;
@@ -82,9 +84,20 @@ namespace Lr01
                 endUnit = "Футы";
                 result = ConvertToFeet(value, startUnit);
             }
+            else if (endUnitFeetRadioButton.IsChecked.Value)
+            {
+                endUnit = "Мили";
+                result = ConvertToMiles(value, startUnit);
+            }
+            else if (endUnitFeetRadioButton.IsChecked.Value)
+            {
+                endUnit = "Ярды";
+                result = ConvertToYard(value, startUnit);
+            }
+
 
             // Вывод результата
-            resultLabel.Content = $"{value} {startUnit} = {result} {endUnit}";
+            resultsListBox.Items.Add($"{value} {startUnit} = {result} {endUnit}");
         }
 
         private double ConvertToMeter(double value, string unit)
@@ -99,6 +112,10 @@ namespace Lr01
                     return value * 0.0254;
                 case "Футы":
                     return value * 0.3048;
+                case "Мили":
+                    return value * 1609.34;
+                case "Ярды":
+                    return value * 0.9144;
                 default:
                     throw new ArgumentException("Некорректное начальное измерение.");
             }
@@ -116,6 +133,10 @@ namespace Lr01
                     return value * 0.0000254;
                 case "Футы":
                     return value * 0.0003048;
+                case "Мили":
+                    return value * 1.60934;
+                case "Ярды":
+                    return value * 0.0009144;
                 default:
                     throw new ArgumentException("Некорректное начальное измерение.");
             }
@@ -133,6 +154,10 @@ namespace Lr01
                     return value;
                 case "Футы":
                     return value * 12;
+                case "Мили":
+                    return value * 63360;
+                case "Ярды":
+                    return value * 36;
                 default:
                     throw new ArgumentException("Некорректное начальное измерение.");
             }
@@ -149,6 +174,52 @@ namespace Lr01
                 case "Дюймы":
                     return value / 12;
                 case "Футы":
+                    return value;
+                case "Мили":
+                    return value * 5280;
+                case "Ярды":
+                    return value * 3;
+                default:
+                    throw new ArgumentException("Некорректное начальное измерение.");
+            }
+        }
+
+        private double ConvertToMiles(double value, string unit)
+        {
+            switch (unit)
+            {
+                case "Метры":
+                    return value * 1609.344;
+                case "Километры":
+                    return value * 1.61;
+                case "Дюймы":
+                    return value * 63360;
+                case "Футы":
+                    return value * 5280;
+                case "Мили":
+                    return value;
+                case "Ярды":
+                    return value * 1760;
+                default:
+                    throw new ArgumentException("Некорректное начальное измерение.");
+            }
+        }
+
+        private double ConvertToYard(double value, string unit)
+        {
+            switch (unit)
+            {
+                case "Метры":
+                    return value / 0.9144;
+                case "Километры":
+                    return value / 0.0009144;
+                case "Дюймы":
+                    return value * 36;
+                case "Футы":
+                    return value * 3;
+                case "Мили":
+                    return value / 1760;
+                case "Ярды":
                     return value;
                 default:
                     throw new ArgumentException("Некорректное начальное измерение.");

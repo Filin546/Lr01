@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lr01"
         mc:Ignorable="d"
-        Title="Converter" Height="250" Width="500">
+        Title="Converter" Height="300" Width="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="120"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -23,6 +23,8 @@
             <ComboBoxItem Content="Километры"/>
             <ComboBoxItem Content="Дюймы"/>
             <ComboBoxItem Content="Футы"/>
+            <ComboBoxItem Content="Мили"/>
+            <ComboBoxItem Content="Ярды"/>
         </ComboBox>
 
         <GroupBox x:Name="endUnitGroupBox" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Header="Конвертировать в">
@@ -31,8 +33,12 @@
                 <RadioButton x:Name="endUnitKilometerRadioButton" Content="Километры" Margin="5"/>
                 <RadioButton x:Name="endUnitInchRadioButton" Content="Дюймы" Margin="5"/>
                 <RadioButton x:Name="endUnitFeetRadioButton" Content="Футы" Margin="5"/>
+                <RadioButton x:Name="endUnitMileRadioButton" Content="Миля" Margin="5"/>
+                <RadioButton x:Name="endUnitYardRadioButton" Content="Миля" Margin="5"/>
             </StackPanel>
         </GroupBox>
+
+        <ListBox x:Name="resultsListBox" Height="auto" Width="220" Grid.Row="1" Margin="0,10,10,10" HorizontalAlignment="Right" FontSize="16" />
 
         <Button x:Name="convertButton" Content="Конвертировать" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Click="ConvertButton_Click"/>
 
